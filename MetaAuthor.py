@@ -13,8 +13,15 @@ def choice():
     choice_input = raw_input("Enter Author to get Author Description or All to get all Meta Description :")
     if choice_input == "All" or choice_input == "all":
         print scraping("meta")
+    elif choice_input == "Author" or choice_input == "author":
+        if scraping('meta[name="author"]'):
+            print scraping('meta[name="author"]')
+        else:
+            print "No Author in Meta tags!"
     else:
-        print scraping('meta[name="author"]')
+        print "Wrong choice entered!"
+        choice()
+
 
 choice()
 
