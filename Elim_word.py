@@ -1,0 +1,5 @@
+import re
+text = "\"Bdisunityydisunitythdisunityisdisunityalldisunitywidisunitydisunitylldisunitykdisunitynodisunitywdisunity thdisunityatdisunityyodisunityuadisunityredisunityM disunityydisunitydidisunityscidisunitypledisunitysidisunity fydisunityoudisunityhadisunityvedisunityldisunityovedisunityfodisunityrodisunitynedisunityandisunityoth disunity er\" (disunityJdisunityohdisunityndisunity 13:35, NKJV)."
+List_eliminate=re.split("disunity",text)
+Message=("").join(List_eliminate)
+print Message
