@@ -25,11 +25,14 @@ dict_data["list_tbl_due_listing"] = cur.fetchall()
 cur.execute("SELECT * FROM pg_catalog.pg_tables;")
 dict_data["list_database_table_properties"] = cur.fetchall()
 
+cur.execute("SELECT table_schema || '.' || table_name FROM information_schema.tables WHERE table_type = 'BASE TABLE' AND table_schema NOT IN ('pg_catalog', 'information_schema');")
+dict_data["names_created_tables"] = cur.fetchall()
+
 myConnection.close()
 
 print "Using psycopg2...\n"
 
-Titles = {"tbl_profiles_names" : "Names for fields in table tbl_profiles", "tbl_due_listing_names" : "Names for fields in table tbl_due_listing", "tbl_profiles_properties" : "Properties for table tbl_profiles", "tbl_due_listing_properties" : "Properties for tbl_due_listing", "list_tbl_profiles" : "Values for table tbl_profiles", "list_tbl_due_listing" : "Values for table tbl_due_listing", "list_database_table_properties" : "Tables"}
+Titles = {"tbl_profiles_names" : "Names for fields in table tbl_profiles", "tbl_due_listing_names" : "Names for fields in table tbl_due_listing", "tbl_profiles_properties" : "Properties for table tbl_profiles", "tbl_due_listing_properties" : "Properties for tbl_due_listing", "list_tbl_profiles" : "Values for table tbl_profiles", "list_tbl_due_listing" : "Values for table tbl_due_listing", "list_database_table_properties" : "Tables", "names_created_tables":"Names of Created Tables"}
 for keys, values in dict_data.items():
     print Titles[keys]
     for each in values:
